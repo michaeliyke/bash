@@ -1,11 +1,13 @@
 #!/bin/bash
 
-echo "Calculating Area of a Rectangle\n"
+echo "Calculating Area of a Rectangle"
 echo "Length: "
 read length
 
 echo "Width: "
 read width
 
-echo "Area: $(($length*$width))"
+area=$(($length*$width))
+
+echo "Area: $area"
 
