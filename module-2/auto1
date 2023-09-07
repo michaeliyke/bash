@@ -1,0 +1,35 @@
+#!/bin/bash
+clear
+
+project=my_c_project
+
+# Create project folder if it does not exist
+if [[ ! -d $project ]]; then
+  mkdir $project
+fi
+
+cd $project;
+ # Make three extra dirs if they don't exist
+ for dir in src include dist; do
+  if [[ ! -d  $dir ]]; then
+     mkdir $dir
+  fi
+done
+
+# Remove the src/main.c file if it exists
+if [[ -e "src/main.c" ]]; then
+  rm "src/main.c"
+fi
+
+cd src;
+touch main.c
+echo "#include <stdio.h>" >> main.c
+echo "int main()" >> main.c
+echo "{" >> main.c
+echo "        printf(\"Hello C developer\n\");" >> main.c
+echo "        return (0);" >> main.c
+echo "}" >> main.c
+cd ..
+
+compile src/main.c -o dist/a.out
+./dist/a.out $*
