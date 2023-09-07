@@ -10,7 +10,7 @@ fi
 
 cd $project;
  # Make three extra dirs if they don't exist
- for dir in src include dist; do
+ for dir in src include bin; do
   if [[ ! -d  $dir ]]; then
      mkdir $dir
   fi
@@ -31,5 +31,5 @@ echo "        return (0);" >> main.c
 echo "}" >> main.c
 cd ..
 
-compile src/main.c -o dist/a.out
-./dist/a.out $*
+compile src/main.c -o bin/a.out
+./bin/a.out $*
